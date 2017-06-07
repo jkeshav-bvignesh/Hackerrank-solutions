@@ -28,4 +28,3 @@ int main(){
     cout<<abs(sum_p-sum_d);
     return 0;
 }
-
