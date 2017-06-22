@@ -1,18 +1,36 @@
+#include <cmath>
 #include <iostream>
-#include <algorithm>
+#include <exception>
+#include <stdexcept>
 using namespace std;
 
+class Calculator{
+    public:
+    int power(int n,int p){
+        if(n<0||p<0){
+            throw runtime_error("n and p should be non-negative");
+        }
+        else{
+            return pow(n,p);
+        }
+    }
+};
 
-int main(){
-    string S;
-    cin >> S;
-    int s;
-    try{
-        s = stoi(S);
-        cout<<s;
+int main()
+{
+    Calculator myCalculator=Calculator();
+    int T,n,p;
+    cin>>T;
+    while(T-->0){
+      if(scanf("%d %d",&n,&p)==2){
+         try{
+               int ans=myCalculator.power(n,p);
+               cout<<ans<<endl; 
+         }
+         catch(exception& e){
+             cout<<e.what()<<endl;
+         }
+      }
     }
-    catch(const invalid_argument& ia){
-        cout<<"Bad String";
-    }
-    return 0;
+    
 }
